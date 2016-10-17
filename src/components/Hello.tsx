@@ -1,9 +1,36 @@
 import * as React from "react";
 
-export interface HelloProps { compiler: string; framework: string; }
+export interface HelloProps { compiler: string; framework: string; someProp: string}
 
-export class Hello extends React.Component<HelloProps, {}> {
-    render() {
-        return <h1>Hello from {this.props.compiler} and {this.props.framework}!</h1>;
+interface MyState {
+  count:number
+}
+
+export class Hello extends React.Component<HelloProps, MyState> {
+  constructor(props: HelloProps){
+      super(props);
+      this.state={count:0};
+  }
+
+    getZero(){
+      return 0;
     }
+
+    incrementCount(){
+      this.setState({
+      count: this.state.count + 1
+    });
+
+    }
+
+    render() {
+      console.log(this)
+        return (
+          <div>
+          <button onClick={this.incrementCount}> Hello from {this.props.someProp}! </button>
+          <p>{this.state.count}</p>
+
+          </div>);
+    }
+
 }
