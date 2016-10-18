@@ -13,20 +13,20 @@ export default class Square extends React.Component <SquareProps, SquareState> {
       black: React.PropTypes.bool
     };
 
-    render() {
-       const { black } = this.props;
-       const fill = black ? 'black' : 'white';
-       const stroke = black ? 'white' : 'black';
+    render(): JSX.Element {
+        const { black } = this.props;
+        const fill: string = black ? 'black' : 'white';
+        const stroke: string = black ? 'white' : 'black';
 
-       return (
-         <div style={{
-           backgroundColor: fill,
-           color: stroke,
-           width: '100%',
-           height: '100%'
-         }}>
-           {this.props.children}
-         </div>
-       );
-     }
+        return (
+            <div style={{
+                backgroundColor: fill,
+                color: stroke,
+                width: '100%',
+                height: '100%'
+            }}>
+                {this.props.children}
+            </div>
+        );
+    }
 }

@@ -17,4 +17,11 @@ function moveKnight(toX, toY) {
     emitChange();
 }
 exports.moveKnight = moveKnight;
+function canMoveKnight(toX, toY) {
+    var x = knightPosition[0], y = knightPosition[1];
+    var dx = Math.abs(toX - x);
+    var dy = Math.abs(toY - y);
+    return ((dx === 2 && dy === 1) || (dx === 1 && dy === 2));
+}
+exports.canMoveKnight = canMoveKnight;
 //# sourceMappingURL=Game.js.map

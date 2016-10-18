@@ -30,7 +30,9 @@ var Board = (function (_super) {
         ));
     };
     Board.prototype.handleSquareClick = function (toX, toY) {
-        Game_1.moveKnight(toX, toY);
+        if (Game_1.canMoveKnight(toX, toY)) {
+            Game_1.moveKnight(toX, toY);
+        }
     };
     Board.prototype.render = function () {
         var squares = [];
@@ -42,9 +44,7 @@ var Board = (function (_super) {
             height: '100%',
             display: 'flex',
             flexWrap: 'wrap'
-        }}, 
-            " ", 
-            squares));
+        }}, squares));
     };
     Board.propTypes = {
         knightPosition: React.PropTypes.arrayOf(React.PropTypes.number.isRequired).isRequired

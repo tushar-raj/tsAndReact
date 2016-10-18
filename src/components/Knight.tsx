@@ -9,7 +9,7 @@ export interface KnightState {
 }
 
 export default class Knight extends React.Component <KnightProps, KnightState> {
-  render() {
-    return <span>♘</span>;
-  }
+    render(): JSX.Element {
+        return <span>♘</span>;
+    }
 }
