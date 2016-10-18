@@ -10,6 +10,8 @@
     "files": [
         "./src/components/Hello.tsx",
         "./src/components/Knight.tsx",
+        "./src/components/Square.tsx",
+        "./src/components/Board.tsx",
         "./src/index.tsx"
     ]
 }

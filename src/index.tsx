@@ -1,10 +1,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import Knight from "./components/Knight"
+import Board from "./components/Board"
 
 ReactDOM.render (
-    <Knight> </Knight>,
+    <Board knightPosition={[0, 4]} />,
     document.getElementById("mainWrapper")
 
 )
