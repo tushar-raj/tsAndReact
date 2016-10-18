@@ -8,22 +8,24 @@ var React = require("react");
 var Hello = (function (_super) {
     __extends(Hello, _super);
     function Hello(props) {
+        var _this = this;
         _super.call(this, props);
+        this.incrementCount = function () {
+            console.log(_this);
+            console.log('hi');
+            _this.setState({
+                count: _this.state.count + 1
+            });
+        };
         this.state = { count: 0 };
     }
     Hello.prototype.getZero = function () {
         return 0;
     };
-    Hello.prototype.incrementCount = function () {
-        console.log(this);
-        this.setState({
-            count: this.state.count + 1
-        });
-    };
     Hello.prototype.render = function () {
         console.log(this);
         return (React.createElement("div", null, 
-            React.createElement("button", {onClick: this.incrementCount.bind(this)}, 
+            React.createElement("button", {onClick: this.incrementCount}, 
                 " Hello from ", 
                 this.props.someProp, 
                 "! "), 
