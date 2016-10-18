@@ -26,12 +26,11 @@ export class Hello extends React.Component < HelloProps, MyState > {
         }
 
         render() {
-
             return (
                 <div>
                     <button onClick = {this.incrementCount}> Hello from {this.props.someProp}! </button>
                     <p> {this.state.count} </p>
                 </div>
             );
-            }
         }
+    }

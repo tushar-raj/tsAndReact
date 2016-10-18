@@ -1,13 +1,19 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import {
-    Hello
-} from "./components/Hello";
+import Knight from "./components/Knight"
 
-ReactDOM.render(
-    <Hello compiler = "TypeScript"
-    framework = "React"
-    someProp = 'something' /> ,
+ReactDOM.render (
+    <Knight> </Knight>,
     document.getElementById("mainWrapper")
-);
+
+)
+
+// import { Hello } from "./components/Hello";
+//
+// ReactDOM.render(
+//     <Hello compiler = "TypeScript"
+//     framework = "React"
+//     someProp = 'something' /> ,
+//     document.getElementById("mainWrapper")
+// );

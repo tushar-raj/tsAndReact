@@ -9,6 +9,7 @@
     },
     "files": [
         "./src/components/Hello.tsx",
+        "./src/components/Knight.tsx",
         "./src/index.tsx"
     ]
 }
