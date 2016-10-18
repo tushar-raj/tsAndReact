@@ -12,24 +12,24 @@ var Hello = (function (_super) {
         _super.call(this, props);
         this.incrementCount = function () {
             console.log(_this);
-            console.log('hi');
             _this.setState({
                 count: _this.state.count + 1
             });
         };
-        this.state = { count: 0 };
+        this.state = {
+            count: 0
+        };
     }
-    Hello.prototype.getZero = function () {
-        return 0;
-    };
     Hello.prototype.render = function () {
-        console.log(this);
         return (React.createElement("div", null, 
             React.createElement("button", {onClick: this.incrementCount}, 
                 " Hello from ", 
                 this.props.someProp, 
                 "! "), 
-            React.createElement("p", null, this.state.count)));
+            React.createElement("p", null, 
+                " ", 
+                this.state.count, 
+                " ")));
     };
     return Hello;
 }(React.Component));
