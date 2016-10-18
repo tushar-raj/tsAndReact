@@ -15,6 +15,7 @@ var Hello = (function (_super) {
         return 0;
     };
     Hello.prototype.incrementCount = function () {
+        console.log(this);
         this.setState({
             count: this.state.count + 1
         });
@@ -22,7 +23,7 @@ var Hello = (function (_super) {
     Hello.prototype.render = function () {
         console.log(this);
         return (React.createElement("div", null, 
-            React.createElement("button", {onClick: this.incrementCount}, 
+            React.createElement("button", {onClick: this.incrementCount.bind(this)}, 
                 " Hello from ", 
                 this.props.someProp, 
                 "! "), 

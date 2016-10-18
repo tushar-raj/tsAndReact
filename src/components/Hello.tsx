@@ -17,6 +17,7 @@ export class Hello extends React.Component<HelloProps, MyState> {
     }
 
     incrementCount(){
+      console.log(this)
       this.setState({
       count: this.state.count + 1
     });
@@ -27,7 +28,7 @@ export class Hello extends React.Component<HelloProps, MyState> {
       console.log(this)
         return (
           <div>
-          <button onClick={this.incrementCount}> Hello from {this.props.someProp}! </button>
+          <button onClick={this.incrementCount.bind(this)}> Hello from {this.props.someProp}! </button>
           <p>{this.state.count}</p>
 
           </div>);
