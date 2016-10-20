@@ -33,6 +33,8 @@ export default class Board extends React.Component <BoardProps, BoardState> {
             <div key = {i}
                 style = {{ width: '12.5%', height: '50px'}}
                 onClick={() => this.handleSquareClick(x, y)}
+                onDragOver={this.handleDragOver}
+                onDrop={this.handleDrop.bind(this, x, y)}
             >
                 <Square black = {black}> {piece} </Square>
             </div>
@@ -40,6 +42,16 @@ export default class Board extends React.Component <BoardProps, BoardState> {
     }
 
     handleSquareClick(toX: number, toY: number): void {
+        if (canMoveKnight(toX, toY)) {
+            moveKnight(toX, toY);
+        }
+    }
+
+    handleDragOver(evt: any): void{
+        evt.preventDefault();
+    }
+
+    handleDrop(toX: number, toY: number): void {
         if (canMoveKnight(toX, toY)) {
             moveKnight(toX, toY);
         }

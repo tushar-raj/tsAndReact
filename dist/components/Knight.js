@@ -4,14 +4,17 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var React = require('react');
+var React = require("react");
 var Knight = (function (_super) {
     __extends(Knight, _super);
     function Knight() {
-        _super.apply(this, arguments);
+        return _super.apply(this, arguments) || this;
     }
     Knight.prototype.render = function () {
-        return React.createElement("span", null, "♘");
+        return React.createElement("span", { id: "knight", draggable: true, onDragStart: this.handleDrag }, "\u2658");
+    };
+    Knight.prototype.handleDrag = function (evt) {
+        evt.dataTransfer.setData("text", evt.target.id);
     };
     return Knight;
 }(React.Component));
