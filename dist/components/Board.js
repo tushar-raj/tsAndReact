@@ -7,6 +7,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 var React = require("react");
 var Square_1 = require("./Square");
 var Knight_1 = require("./Knight");
+var Rook_1 = require("./Rook");
 var Game_1 = require("./Game");
 var Board = (function (_super) {
     __extends(Board, _super);
@@ -14,24 +15,19 @@ var Board = (function (_super) {
         return _super.apply(this, arguments) || this;
     }
     Board.prototype.renderSquare = function (i) {
-        var _this = this;
         var x = i % 8;
         var y = Math.floor(i / 8);
         var black = (x + y) % 2 === 1;
         var _a = this.props.knightPosition, knightX = _a[0], knightY = _a[1];
+        var _b = this.props.rookPosition, rookX = _b[0], rookY = _b[1];
         var piece = (x === knightX && y === knightY) ?
-            React.createElement(Knight_1.default, null) :
-            null;
-        return (React.createElement("div", { key: i, style: { width: '12.5%', height: '50px' }, onClick: function () { return _this.handleSquareClick(x, y); }, onDragOver: this.handleDragOver, onDrop: this.handleDrop.bind(this, x, y) },
+            React.createElement(Knight_1.default, null) : (x === rookX && y === rookY) ? React.createElement(Rook_1.default, null)
+            : null;
+        return (React.createElement("div", { key: i, style: { width: '12.5%', height: '50px' }, onDragOver: this.handleDragOver, onDrop: this.handleDrop.bind(this, x, y) },
             React.createElement(Square_1.default, { black: black },
                 " ",
                 piece,
                 " ")));
-    };
-    Board.prototype.handleSquareClick = function (toX, toY) {
-        if (Game_1.canMoveKnight(toX, toY)) {
-            Game_1.moveKnight(toX, toY);
-        }
     };
     Board.prototype.handleDragOver = function (evt) {
         evt.preventDefault();
@@ -39,6 +35,9 @@ var Board = (function (_super) {
     Board.prototype.handleDrop = function (toX, toY) {
         if (Game_1.canMoveKnight(toX, toY)) {
             Game_1.moveKnight(toX, toY);
+        }
+        else {
+            console.log('beep');
         }
     };
     Board.prototype.render = function () {
@@ -58,6 +57,7 @@ var Board = (function (_super) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = Board;
 Board.propTypes = {
-    knightPosition: React.PropTypes.arrayOf(React.PropTypes.number.isRequired).isRequired
+    knightPosition: React.PropTypes.arrayOf(React.PropTypes.number.isRequired).isRequired,
+    rookPosition: React.PropTypes.arrayOf(React.PropTypes.number.isRequired)
 };
 //# sourceMappingURL=Board.js.map

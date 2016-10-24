@@ -8,9 +8,9 @@ const rootEl = document.getElementById('mainWrapper');
 
 
 
-observe((knightPosition: number[]): void =>  {
+observe((knightPosition: number[], rookPosition: number[]): void =>  {
     ReactDOM.render(
-    <Board knightPosition={knightPosition} />,
+    <Board knightPosition={knightPosition} rookPosition={rookPosition} />,
         rootEl
     )}
 );
