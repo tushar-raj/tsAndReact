@@ -33,19 +33,22 @@ export default class Board extends React.Component <BoardProps, BoardState> {
         const [knightX, knightY]: number[] = this.props.knightPosition;
         const [rookX, rookY]: number[] = this.props.rookPosition;
 
+        let piece: any = null;
+        if(x === knightX && y === knightY){
+            piece = <Knight />
+        }else if(x === rookX && y === rookY){
+            piece = <Rook />
 
-        const piece: JSX.Element = (x === knightX && y === knightY) ?
-            <Knight /> : (x === rookX && y === rookY)? <Rook />
-            : null;
+        }
+
 
         return (
             <div key = {i}
                 style = {{ width: '12.5%', height: '50px'}}
-                //onClick={() => this.handleSquareClick(x, y)}
-                onDragOver={this.handleDragOver}
-                onDrop={this.handleDrop.bind(this, x, y)}
+                //onClick={() => this.handleSquareClick(x, y)} //hack: find better solution
             >
-                <Square black = {black}> {piece} </Square>
+                <Square black = {black} x= {x} y={y} piece={piece}
+                > {piece} </Square>
             </div>
         );
     }
@@ -56,19 +59,7 @@ export default class Board extends React.Component <BoardProps, BoardState> {
     //     }
     // }
 
-    handleDragOver(evt: any): void{
-        evt.preventDefault();
-    }
 
-    handleDrop(toX: number, toY: number): void {
-        
-        if (canMoveKnight(toX, toY)) {
-            moveKnight(toX, toY);
-        } else {
-            console.log('beep')
-            //alert('Wrong move');
-        }
-    }
 
     render(): JSX.Element {
         const squares: JSX.Element[] = [];

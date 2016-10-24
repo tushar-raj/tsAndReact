@@ -8,7 +8,6 @@ var React = require("react");
 var Square_1 = require("./Square");
 var Knight_1 = require("./Knight");
 var Rook_1 = require("./Rook");
-var Game_1 = require("./Game");
 var Board = (function (_super) {
     __extends(Board, _super);
     function Board() {
@@ -20,25 +19,18 @@ var Board = (function (_super) {
         var black = (x + y) % 2 === 1;
         var _a = this.props.knightPosition, knightX = _a[0], knightY = _a[1];
         var _b = this.props.rookPosition, rookX = _b[0], rookY = _b[1];
-        var piece = (x === knightX && y === knightY) ?
-            React.createElement(Knight_1.default, null) : (x === rookX && y === rookY) ? React.createElement(Rook_1.default, null)
-            : null;
-        return (React.createElement("div", { key: i, style: { width: '12.5%', height: '50px' }, onDragOver: this.handleDragOver, onDrop: this.handleDrop.bind(this, x, y) },
-            React.createElement(Square_1.default, { black: black },
+        var piece = null;
+        if (x === knightX && y === knightY) {
+            piece = React.createElement(Knight_1.default, null);
+        }
+        else if (x === rookX && y === rookY) {
+            piece = React.createElement(Rook_1.default, null);
+        }
+        return (React.createElement("div", { key: i, style: { width: '12.5%', height: '50px' } },
+            React.createElement(Square_1.default, { black: black, x: x, y: y, piece: piece },
                 " ",
                 piece,
                 " ")));
-    };
-    Board.prototype.handleDragOver = function (evt) {
-        evt.preventDefault();
-    };
-    Board.prototype.handleDrop = function (toX, toY) {
-        if (Game_1.canMoveKnight(toX, toY)) {
-            Game_1.moveKnight(toX, toY);
-        }
-        else {
-            console.log('beep');
-        }
     };
     Board.prototype.render = function () {
         var squares = [];

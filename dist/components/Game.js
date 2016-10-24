@@ -31,9 +31,10 @@ function canMoveKnight(toX, toY) {
 }
 exports.canMoveKnight = canMoveKnight;
 function canMoveRook(toX, toY) {
-    var x = knightPosition[0], y = knightPosition[1];
+    var x = rookPosition[0], y = rookPosition[1];
     var dx = Math.abs(toX - x);
     var dy = Math.abs(toY - y);
+    debugger;
     return ((dx === 0) || (dy === 0));
 }
 exports.canMoveRook = canMoveRook;

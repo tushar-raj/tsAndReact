@@ -5,13 +5,14 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var React = require("react");
+var Game_1 = require("./Game");
 var Square = (function (_super) {
     __extends(Square, _super);
     function Square() {
         return _super.apply(this, arguments) || this;
     }
     Square.prototype.render = function () {
-        var black = this.props.black;
+        var _a = this.props, black = _a.black, x = _a.x, y = _a.y;
         var fill = black ? 'black' : 'white';
         var stroke = black ? 'white' : 'black';
         return (React.createElement("div", { style: {
@@ -19,7 +20,34 @@ var Square = (function (_super) {
                 color: stroke,
                 width: '100%',
                 height: '100%'
-            } }, this.props.children));
+            }, onDragOver: this.handleDragOver, onDrop: this.handleDrop.bind(this) }, this.props.children));
+    };
+    Square.prototype.handleDragOver = function (evt) {
+        evt.preventDefault();
+    };
+    Square.prototype.handleDrop = function (evt) {
+        console.log(evt);
+        var draggedPiece = evt.dataTransfer.getData('text');
+        var _a = this.props, toX = _a.x, toY = _a.y, piece = _a.piece;
+        if (piece !== null) {
+            return;
+        }
+        if (draggedPiece == 'knight') {
+            if (Game_1.canMoveKnight(toX, toY)) {
+                Game_1.moveKnight(toX, toY);
+            }
+            else {
+                console.log('beep');
+            }
+        }
+        else if (draggedPiece == 'rook') {
+            if (Game_1.canMoveRook(toX, toY)) {
+                Game_1.moveRook(toX, toY);
+            }
+            else {
+                console.log('beep');
+            }
+        }
     };
     return Square;
 }(React.Component));
