@@ -1,9 +1,10 @@
 "use strict";
-var knightPosition = [1, 0];
 var rookPosition = [0, 0];
+var knightPosition = [1, 0];
+var bishopPosition = [2, 0];
 var observer = null;
 function emitChange() {
-    observer(knightPosition, rookPosition);
+    observer(knightPosition, rookPosition, bishopPosition);
 }
 function observe(o) {
     if (observer) {
@@ -23,6 +24,11 @@ function moveRook(toX, toY) {
     emitChange();
 }
 exports.moveRook = moveRook;
+function moveBishop(toX, toY) {
+    bishopPosition = [toX, toY];
+    emitChange();
+}
+exports.moveBishop = moveBishop;
 function canMoveKnight(toX, toY) {
     var x = knightPosition[0], y = knightPosition[1];
     var dx = Math.abs(toX - x);
@@ -34,8 +40,14 @@ function canMoveRook(toX, toY) {
     var x = rookPosition[0], y = rookPosition[1];
     var dx = Math.abs(toX - x);
     var dy = Math.abs(toY - y);
-    debugger;
     return ((dx === 0) || (dy === 0));
 }
 exports.canMoveRook = canMoveRook;
+function canMoveBishop(toX, toY) {
+    var x = bishopPosition[0], y = bishopPosition[1];
+    var dx = Math.abs(toX - x);
+    var dy = Math.abs(toY - y);
+    return (dx === dy);
+}
+exports.canMoveBishop = canMoveBishop;
 //# sourceMappingURL=Game.js.map

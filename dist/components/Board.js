@@ -8,6 +8,7 @@ var React = require("react");
 var Square_1 = require("./Square");
 var Knight_1 = require("./Knight");
 var Rook_1 = require("./Rook");
+var Bishop_1 = require("./Bishop");
 var Board = (function (_super) {
     __extends(Board, _super);
     function Board() {
@@ -19,12 +20,16 @@ var Board = (function (_super) {
         var black = (x + y) % 2 === 1;
         var _a = this.props.knightPosition, knightX = _a[0], knightY = _a[1];
         var _b = this.props.rookPosition, rookX = _b[0], rookY = _b[1];
+        var _c = this.props.bishopPosition, bishopX = _c[0], bishopY = _c[1];
         var piece = null;
         if (x === knightX && y === knightY) {
             piece = React.createElement(Knight_1.default, null);
         }
         else if (x === rookX && y === rookY) {
             piece = React.createElement(Rook_1.default, null);
+        }
+        else if (x === bishopX && y === bishopY) {
+            piece = React.createElement(Bishop_1.default, null);
         }
         return (React.createElement("div", { key: i, style: { width: '12.5%', height: '50px' } },
             React.createElement(Square_1.default, { black: black, x: x, y: y, piece: piece },
@@ -50,6 +55,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = Board;
 Board.propTypes = {
     knightPosition: React.PropTypes.arrayOf(React.PropTypes.number.isRequired).isRequired,
-    rookPosition: React.PropTypes.arrayOf(React.PropTypes.number.isRequired)
+    rookPosition: React.PropTypes.arrayOf(React.PropTypes.number.isRequired),
+    bishopPosition: React.PropTypes.arrayOf(React.PropTypes.number.isRequired),
 };
 //# sourceMappingURL=Board.js.map

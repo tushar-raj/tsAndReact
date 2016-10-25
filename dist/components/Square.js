@@ -32,22 +32,37 @@ var Square = (function (_super) {
         if (piece !== null) {
             return;
         }
-        if (draggedPiece == 'knight') {
-            if (Game_1.canMoveKnight(toX, toY)) {
-                Game_1.moveKnight(toX, toY);
-            }
-            else {
-                console.log('beep');
-            }
+        switch (draggedPiece) {
+            case 'knight':
+                if (Game_1.canMoveKnight(toX, toY)) {
+                    Game_1.moveKnight(toX, toY);
+                }
+                else {
+                    this.handleWrongMove();
+                }
+                break;
+            case 'rook':
+                if (Game_1.canMoveRook(toX, toY)) {
+                    Game_1.moveRook(toX, toY);
+                }
+                else {
+                    this.handleWrongMove();
+                }
+                break;
+            case 'bishop':
+                if (Game_1.canMoveBishop(toX, toY)) {
+                    Game_1.moveBishop(toX, toY);
+                }
+                else {
+                    this.handleWrongMove();
+                }
+                break;
+            default:
+                this.handleWrongMove();
         }
-        else if (draggedPiece == 'rook') {
-            if (Game_1.canMoveRook(toX, toY)) {
-                Game_1.moveRook(toX, toY);
-            }
-            else {
-                console.log('beep');
-            }
-        }
+    };
+    Square.prototype.handleWrongMove = function () {
+        console.log('Wrong move');
     };
     return Square;
 }(React.Component));

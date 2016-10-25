@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { moveKnight, canMoveKnight, moveRook, canMoveRook } from './Game';
+import { moveKnight, canMoveKnight, moveRook, canMoveRook, moveBishop, canMoveBishop } from './Game';
 
 export interface SquareProps {
     black: boolean,
@@ -46,39 +46,47 @@ export default class Square extends React.Component <SquareProps, SquareState> {
         evt.preventDefault();
     }
 
-    // handleDrop(toX: number, toY: number, piece: JSX.Element): void {
     handleDrop(evt: any) {
         console.log(evt)
         const draggedPiece = evt.dataTransfer.getData('text');
         const {x: toX, y: toY, piece } = this.props;
 
-        // const moveMap = {
-        //     'knight': 'moveKnight',
-        //     'rook': 'moveRook',
-        // }
-
-        //moveMap[draggedPiece](toX, toY);
-
         if(piece !== null){
             return
         }
 
-        if(draggedPiece == 'knight'){
-            if (canMoveKnight(toX, toY)) {
-                moveKnight(toX, toY);
-            } else {
-                console.log('beep')
-                //alert('Wrong move');
-            }
-        } else if(draggedPiece == 'rook'){
-            if (canMoveRook(toX, toY)) {
-                moveRook(toX, toY);
-            } else {
-                console.log('beep')
-                //alert('Wrong move');
-            }
+        switch(draggedPiece){
+            case 'knight':
+                if (canMoveKnight(toX, toY)) {
+                    moveKnight(toX, toY);
+                } else {
+                    this.handleWrongMove();
+                }
+            break;
+
+            case 'rook':
+                if (canMoveRook(toX, toY)) {
+                    moveRook(toX, toY);
+                } else {
+                    this.handleWrongMove();
+                }
+            break;
+
+            case 'bishop':
+                if (canMoveBishop(toX, toY)) {
+                    moveBishop(toX, toY);
+                } else {
+                    this.handleWrongMove();
+                }
+            break;
+
+            default:
+                this.handleWrongMove();
         }
+    }
 
-
+    handleWrongMove(){
+        console.log('Wrong move');
+        //alert('Wrong move');
     }
 }

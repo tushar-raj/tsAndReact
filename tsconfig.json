@@ -11,6 +11,7 @@
         "./src/components/Hello.tsx",
         "./src/components/Knight.tsx",
         "./src/components/Rook.tsx",
+        "./src/components/Bishop.tsx",
         "./src/components/Square.tsx",
         "./src/components/Board.tsx",
         "./src/components/Game.tsx",

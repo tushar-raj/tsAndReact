@@ -2,12 +2,13 @@ import * as React from 'react';
 import Square from './Square';
 import Knight from './Knight';
 import Rook from './Rook';
+import Bishop from './Bishop';
 
-import { moveKnight, canMoveKnight } from './Game';
 
 export interface BoardProps {
     knightPosition: number[],
-    rookPosition: number[]
+    rookPosition: number[],
+    bishopPosition: number[],
 }
 
 export interface BoardState {
@@ -22,7 +23,11 @@ export default class Board extends React.Component <BoardProps, BoardState> {
 
         rookPosition: React.PropTypes.arrayOf(
             React.PropTypes.number.isRequired
-        )
+        ),
+
+        bishopPosition: React.PropTypes.arrayOf(
+            React.PropTypes.number.isRequired
+        ),
     };
 
     renderSquare(i: number): JSX.Element {
@@ -32,13 +37,15 @@ export default class Board extends React.Component <BoardProps, BoardState> {
 
         const [knightX, knightY]: number[] = this.props.knightPosition;
         const [rookX, rookY]: number[] = this.props.rookPosition;
+        const [bishopX, bishopY]: number[] = this.props.bishopPosition;
 
         let piece: any = null;
         if(x === knightX && y === knightY){
             piece = <Knight />
-        }else if(x === rookX && y === rookY){
+        } else if(x === rookX && y === rookY){
             piece = <Rook />
-
+        } else if(x === bishopX && y === bishopY){
+            piece = <Bishop />
         }
 
 

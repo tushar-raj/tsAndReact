@@ -10,7 +10,14 @@ export interface KnightState {
 
 export default class Knight extends React.Component <KnightProps, KnightState> {
     render(): JSX.Element {
-        return <span id="knight" draggable={true} onDragStart ={this.handleDrag}>♘</span>;
+        return <span
+                    id="knight"
+                    draggable={true}
+                    onDragStart ={this.handleDrag}
+                    style={{fontSize: '40px'}}
+                >
+                    ♘
+                </span>;
     }
 
     handleDrag(evt: any){

@@ -1,22 +1,22 @@
 import * as React from 'react';
 
-export interface RookProps {
+export interface BishopProps {
     // color: string
 }
 
-export interface RookState {
+export interface BishopState {
     // position: [number, number]
 }
 
-export default class Rook extends React.Component <RookProps, RookState> {
+export default class Bishop extends React.Component <BishopProps, BishopState> {
     render(): JSX.Element {
         return <span
-                    id="rook"
+                    id="bishop"
                     draggable={true}
-                    onDragStart ={this.handleDrag}                    
+                    onDragStart ={this.handleDrag}
                     style={{fontSize: '40px'}}
                 >
-                    ♖
+                    ♗
                 </span>;
     }
 

@@ -5,19 +5,19 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var React = require("react");
-var Knight = (function (_super) {
-    __extends(Knight, _super);
-    function Knight() {
+var Bishop = (function (_super) {
+    __extends(Bishop, _super);
+    function Bishop() {
         return _super.apply(this, arguments) || this;
     }
-    Knight.prototype.render = function () {
-        return React.createElement("span", { id: "knight", draggable: true, onDragStart: this.handleDrag, style: { fontSize: '40px' } }, "\u2658");
+    Bishop.prototype.render = function () {
+        return React.createElement("span", { id: "bishop", draggable: true, onDragStart: this.handleDrag, style: { fontSize: '40px' } }, "\u2657");
     };
-    Knight.prototype.handleDrag = function (evt) {
+    Bishop.prototype.handleDrag = function (evt) {
         evt.dataTransfer.setData("text", evt.target.id);
     };
-    return Knight;
+    return Bishop;
 }(React.Component));
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = Knight;
-//# sourceMappingURL=Knight.js.map
+exports.default = Bishop;
+//# sourceMappingURL=Bishop.js.map
